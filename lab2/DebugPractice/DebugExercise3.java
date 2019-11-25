@@ -10,6 +10,8 @@ public class DebugExercise3 {
             double cost = in.readDouble();
             int numAvailable = in.readInt();
             if (foodType.equals("turnip")) {
+                // problem:
+                // in csv file, row kroger turnip has very negative num
                 int newTotal = totalTurnips + numAvailable;
                 totalTurnips = newTotal;
             }
