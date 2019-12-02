@@ -1,6 +1,7 @@
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.junit.experimental.theories.suppliers.TestedOn;
 
 public class IntListTest {
 
@@ -9,6 +10,27 @@ public class IntListTest {
      * method. The main point of this is to convince you that
      * assertEquals knows how to handle IntLists just fine.
      */
+
+    @Test(timeout = 1000) //milliseconds
+    public void testReverse() {
+        IntList one = new IntList(1, null);
+        IntList twoOne = new IntList(2, one);
+        IntList threeTwoOne = new IntList(3, twoOne);
+
+        IntList three = new IntList(3, null);
+        IntList twoThree = new IntList(2, three);
+        IntList oneTwoThree = new IntList(1, twoThree);
+
+        IntList x = IntList.of(3,2,1);
+        IntList reverse_x = IntList.reverse(x);
+        assertEquals(oneTwoThree, reverse_x);
+        // test if destructive to x
+        assertNotEquals(threeTwoOne, x);
+
+        // test for null input
+        IntList reverse_null = IntList.reverse(null);
+        assertEquals(null, reverse_null);
+    }
 
     @Test
     public void testList() {
